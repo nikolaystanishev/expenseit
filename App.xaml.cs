@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using expensit.Views;
 using System.Windows;
 
 namespace expensit
@@ -13,5 +8,12 @@ namespace expensit
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            MainWindow window = new MainWindow();
+            window.Show();
+
+            base.OnStartup(e);
+        }
     }
 }
