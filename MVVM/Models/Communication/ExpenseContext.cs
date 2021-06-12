@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace expensit.MVVM.Models
+namespace expensit.MVVM.Models.Communication
 {
     class ExpenseContext : DbContext
     {
@@ -8,5 +8,12 @@ namespace expensit.MVVM.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
             => options.UseSqlite(@"Data Source=blogging.db");
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ExpenseRecord>()
+                .Property(b => b.PayDate)
+                .HasDefaultValueSql("getdate()");
+        }
     }
 }

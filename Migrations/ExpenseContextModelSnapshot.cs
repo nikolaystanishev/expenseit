@@ -3,7 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using expensit.MVVM.Models;
+using expensit.MVVM.Models.Communication;
 
 namespace expensit.Migrations
 {
@@ -21,14 +21,16 @@ namespace expensit.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("TEXT");
 
-                    b.Property<double>("Amount")
-                        .HasColumnType("REAL");
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(19,2)");
+
+                    b.Property<DateTime>("PayDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT")
+                        .HasDefaultValueSql("getdate()");
 
                     b.Property<int>("Type")
                         .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("payDate")
-                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -40,13 +42,15 @@ namespace expensit.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Color")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("ExpenseRecordId")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("color")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("name")
+                    b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace expensit.MVVM.Models
 {
@@ -15,9 +17,15 @@ namespace expensit.MVVM.Models
     public class ExpenseRecord
     {
         public string Id { get; set; }
-        public double Amount { get; set; }
+        
+        [Required]
+        [Column(TypeName = "decimal(19,2)")]
+        public decimal Amount { get; set; }
+        
         public ExpenseType Type { get; set; }
-        public DateTime payDate { get; set; }
+
+        public DateTime PayDate { get; set; }
+        
         public List<Group> Groups { get; } = new List<Group>();
     }
 }

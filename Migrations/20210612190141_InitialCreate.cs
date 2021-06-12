@@ -12,9 +12,9 @@ namespace expensit.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "TEXT", nullable: false),
-                    Amount = table.Column<double>(type: "REAL", nullable: false),
+                    Amount = table.Column<decimal>(type: "decimal(19,2)", nullable: false),
                     Type = table.Column<int>(type: "INTEGER", nullable: false),
-                    payDate = table.Column<DateTime>(type: "TEXT", nullable: false)
+                    PayDate = table.Column<DateTime>(type: "TEXT", nullable: false, defaultValueSql: "getdate()")
                 },
                 constraints: table =>
                 {
@@ -26,8 +26,8 @@ namespace expensit.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "TEXT", nullable: false),
-                    name = table.Column<string>(type: "TEXT", nullable: true),
-                    color = table.Column<string>(type: "TEXT", nullable: true),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    Color = table.Column<string>(type: "TEXT", nullable: false),
                     ExpenseRecordId = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
