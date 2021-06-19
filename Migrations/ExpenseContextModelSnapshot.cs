@@ -19,6 +19,7 @@ namespace expensit.Migrations
             modelBuilder.Entity("expensit.MVVM.Models.ExpenseRecord", b =>
                 {
                     b.Property<string>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
                     b.Property<decimal>("Amount")
@@ -27,7 +28,7 @@ namespace expensit.Migrations
                     b.Property<DateTime>("PayDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT")
-                        .HasDefaultValueSql("getdate()");
+                        .HasDefaultValueSql("datetime('now')");
 
                     b.Property<int>("Type")
                         .HasColumnType("INTEGER");
@@ -40,6 +41,7 @@ namespace expensit.Migrations
             modelBuilder.Entity("expensit.MVVM.Models.Group", b =>
                 {
                     b.Property<string>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Color")

@@ -27,7 +27,6 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-
             <TextBlock Text="ExpenseIt" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White"
                        FontSize="22" Margin="20,0,0,0"/>
 

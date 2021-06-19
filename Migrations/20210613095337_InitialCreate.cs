@@ -14,7 +14,7 @@ namespace expensit.Migrations
                     Id = table.Column<string>(type: "TEXT", nullable: false),
                     Amount = table.Column<decimal>(type: "decimal(19,2)", nullable: false),
                     Type = table.Column<int>(type: "INTEGER", nullable: false),
-                    PayDate = table.Column<DateTime>(type: "TEXT", nullable: false, defaultValueSql: "getdate()")
+                    PayDate = table.Column<DateTime>(type: "TEXT", nullable: false, defaultValueSql: "datetime('now')")
                 },
                 constraints: table =>
                 {

@@ -11,11 +11,14 @@ namespace expensit.MVVM.Models
         Water,
         Internet,
         TV,
-        Fuels
+        Fuels,
+        Other
     }
 
     public class ExpenseRecord
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string Id { get; set; }
         
         [Required]

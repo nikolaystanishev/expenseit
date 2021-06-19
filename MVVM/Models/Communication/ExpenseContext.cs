@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace expensit.MVVM.Models.Communication
 {
@@ -6,14 +7,16 @@ namespace expensit.MVVM.Models.Communication
     {
         public DbSet<ExpenseRecord> expenseRecords { get; set; }
 
+        string baseDir = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlite(@"Data Source=blogging.db");
+            => options.UseSqlite(@$"Data Source={baseDir}\expenseit.db");
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ExpenseRecord>()
                 .Property(b => b.PayDate)
-                .HasDefaultValueSql("getdate()");
+                .HasDefaultValueSql("datetime('now')");
         }
     }
 }

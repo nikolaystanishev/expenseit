@@ -9,7 +9,7 @@ using expensit.MVVM.Models.Communication;
 namespace expensit.Migrations
 {
     [DbContext(typeof(ExpenseContext))]
-    [Migration("20210612190141_InitialCreate")]
+    [Migration("20210613095337_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,6 +21,7 @@ namespace expensit.Migrations
             modelBuilder.Entity("expensit.MVVM.Models.ExpenseRecord", b =>
                 {
                     b.Property<string>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
                     b.Property<decimal>("Amount")
@@ -29,7 +30,7 @@ namespace expensit.Migrations
                     b.Property<DateTime>("PayDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT")
-                        .HasDefaultValueSql("getdate()");
+                        .HasDefaultValueSql("datetime('now')");
 
                     b.Property<int>("Type")
                         .HasColumnType("INTEGER");
@@ -42,6 +43,7 @@ namespace expensit.Migrations
             modelBuilder.Entity("expensit.MVVM.Models.Group", b =>
                 {
                     b.Property<string>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Color")
