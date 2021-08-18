@@ -35,7 +35,7 @@ namespace expensit.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("expenseRecords");
+                    b.ToTable("ExpenseRecords");
                 });
 
             modelBuilder.Entity("expensit.MVVM.Models.Group", b =>
@@ -59,7 +59,7 @@ namespace expensit.Migrations
 
                     b.HasIndex("ExpenseRecordId");
 
-                    b.ToTable("Group");
+                    b.ToTable("Groups");
                 });
 
             modelBuilder.Entity("expensit.MVVM.Models.Group", b =>

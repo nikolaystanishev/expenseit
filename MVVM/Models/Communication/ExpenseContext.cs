@@ -5,7 +5,9 @@ namespace expensit.MVVM.Models.Communication
 {
     class ExpenseContext : DbContext
     {
-        public DbSet<ExpenseRecord> expenseRecords { get; set; }
+        public DbSet<ExpenseRecord> ExpenseRecords { get; set; }
+
+        public DbSet<Group> Group { get; set; }
 
         string baseDir = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 

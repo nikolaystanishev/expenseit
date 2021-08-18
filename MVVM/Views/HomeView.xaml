@@ -5,44 +5,128 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:expensit.MVVM.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+             xmlns:ViewModels="clr-namespace:expensit.MVVM.ViewModels"
+             xmlns:System="clr-namespace:System;assembly=mscorlib"
+             xmlns:Models="clr-namespace:expensit.MVVM.Models"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             Background="Transparent">
+    <UserControl.DataContext>
+        <ViewModels:HomeViewModel/>
+    </UserControl.DataContext>
+    <UserControl.Resources>
+        <ObjectDataProvider x:Key="types" MethodName="GetValues" ObjectType="{x:Type System:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="Models:ExpenseType"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </UserControl.Resources>
     <StackPanel>
-        <TextBlock Text="Discover" Foreground="White" FontSize="28" HorizontalAlignment="Left" Margin="0,0,0,20"/>
+        <TextBlock Text="Expense Reports" Foreground="White" FontSize="28" HorizontalAlignment="Left" Margin="0,0,0,20"/>
 
-        <StackPanel Orientation="Horizontal">
-            <Border Width="400" Height="200">
-                <Border.Background>
-                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                        <GradientStop Color="#5bc3ff" Offset="0.0"/>
-                        <GradientStop Color="#3aa0ff" Offset="1"/>
-                    </LinearGradientBrush>
-                </Border.Background>
-
-                <Border.Clip>
-                    <RectangleGeometry RadiusX="10" RadiusY="10" Rect="0,0,400,200"/>
-                </Border.Clip>
-
-                <Grid>
-                    <StackPanel>
-                        <TextBlock Text="World leader&#x0a;in global finance" Foreground="White" FontSize="28"
-                                   Margin="20,10,10,0"/>
-                        <TextBlock Text="Get started today!" Foreground="White" FontSize="18"
-                                   Margin="20,10,10,0"/>
-                    </StackPanel>
-
-                    <!-- <Image Width="250" Height="250" Source="" HorizontalAlignment="Right" VerticalAlignment="Bottom"
-                           Margin="0,0,-99,-76" RenderTransformOrigin="0.5,0.5"/> -->
-                </Grid>
-            </Border>
-
-            <Border Width="200" Height="200" CornerRadius="10" Margin="45,0,0,0">
-                <Border.Background>
-                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                        <GradientStop Color="#ffc554" Offset="0.0"/>
-                        <GradientStop Color="#ffb73a" Offset="1"/>
-                    </LinearGradientBrush>
-                </Border.Background>
-            </Border>
-        </StackPanel>
+        <WrapPanel Orientation="Vertical">
+            <DataGrid ItemsSource="{Binding ExpenseRecords}" AutoGenerateColumns="False" Background="Transparent" Width="800">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Amount">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox
+                                    Text="{Binding Amount}"
+                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Type">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <ComboBox
+                                    IsEditable="True"
+                                    Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                    ItemsSource="{Binding Source={StaticResource types}}"
+                                    Text="{Binding Type}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Pay Date">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <DatePicker
+                                    SelectedDate="{Binding PayDate}"
+                                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Groups">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <ListBox ItemsSource="{Binding Groups}" SelectionMode="Multiple">
+                                        <ListBox.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel Orientation='Horizontal'/>
+                                            </ItemsPanelTemplate>
+                                        </ListBox.ItemsPanel>
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal" Background="{Binding Color}">
+                                                    <TextBlock
+                                                        Style="{StaticResource MaterialDesignBody1TextBlock}"
+                                                        Text="{Binding Name}"
+                                                        Margin="5,0,0,5"/>
+                                                    <Button
+                                                        Width="20"
+                                                        Height="20"
+                                                        Margin="5,5,5,5"
+                                                        Padding="0"
+                                                        HorizontalContentAlignment="Center"
+                                                        VerticalContentAlignment="Center"
+                                                        Background="Transparent"
+                                                        BorderThickness="0"
+                                                        Command="{Binding DataContext.RemoveGroupFromExpenseCommand, RelativeSource={RelativeSource AncestorType=UserControl, AncestorLevel=1}}"
+                                                        CommandParameter="{Binding Id}">
+                                                        <Button.Content>
+                                                            <materialDesign:PackIcon
+                                                                Width="15"
+                                                                Height="15"
+                                                                HorizontalAlignment="Center"
+                                                                VerticalAlignment="Center"
+                                                                Margin="5,5,5,5"
+                                                                Kind="CloseBold"
+                                                                Foreground="Black"/>
+                                                        </Button.Content>
+                                                    </Button>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ListBox>
+                                    <TextBox Width="128" Text="{Binding DataContext.NewGroup, RelativeSource={RelativeSource AncestorType=UserControl, AncestorLevel=1}}"/>
+                                    <Button
+                                        Width="20"
+                                        Height="20"
+                                        Margin="5,5,5,5"
+                                        Padding="0"
+                                        HorizontalContentAlignment="Center"
+                                        VerticalContentAlignment="Center"
+                                        BorderThickness="0"
+                                        Command="{Binding DataContext.AddGroupFromExpenseCommand, RelativeSource={RelativeSource AncestorType=UserControl, AncestorLevel=1}}"
+                                        CommandParameter="{Binding Id}">
+                                        <Button.Content>
+                                            <materialDesign:PackIcon
+                                                Width="20"
+                                                Height="20"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                Margin="2.5,2.5,2.5,2.5"
+                                                Kind="Plus"
+                                                Foreground="Black" RenderTransformOrigin="0.894,0.638"/>
+                                        </Button.Content>
+                                    </Button>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </WrapPanel>
     </StackPanel>
 </UserControl>
