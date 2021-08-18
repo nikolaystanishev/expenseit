@@ -28,14 +28,14 @@
             </TextBlock>
             <Separator Style="{StaticResource MaterialDesignSeparator}" />
             <StackPanel Margin="0 20 0 0">
-                <TextBox materialDesign:HintAssist.Hint="Amount" Foreground="#C3C3C3" Text="{Binding Expense.Amount}"
+                <TextBox materialDesign:HintAssist.Hint="Amount" Text="{Binding Expense.Amount}"
                          Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                 <ComboBox materialDesign:HintAssist.Hint="Type" IsEditable="True" Margin="0 20 0 0"
                           Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                          ItemsSource="{Binding Source={StaticResource types}}" Foreground="#C3C3C3"
+                          ItemsSource="{Binding Source={StaticResource types}}"
                           SelectedItem="Other" Text="{Binding Expense.Type}"/>
-                <DatePicker materialDesign:HintAssist.Hint="Pay Date" Margin="0 15 0 0" Foreground="#C3C3C3"
-                            Background="White" Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                <DatePicker materialDesign:HintAssist.Hint="Pay Date" Margin="0 15 0 0"
+                            Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
                             Text="{Binding Expense.PayDate}"/>
                 <Separator Style="{StaticResource MaterialDesignSeparator}" />
                 <materialDesign:DialogHost CloseOnClickAway="True">
@@ -46,8 +46,7 @@
                     </materialDesign:DialogHost.DialogContent>
 
                     <Button Command="{Binding CreateExpenseCommand}" Content="Save Expense"
-                            HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50,0,0,0"
-                            Style="{StaticResource MaterialDesignFlatAccentBgButton}"/>
+                            HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50,0,0,0"/>
                 </materialDesign:DialogHost>
             </StackPanel>
         </StackPanel>

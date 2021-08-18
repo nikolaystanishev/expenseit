@@ -9,8 +9,15 @@
         Height="600" Width="920"
         WindowStyle="None"
         ResizeMode="NoResize"
+        AllowsTransparency="True"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
         Background="Transparent"
-        AllowsTransparency="True">
+        FontFamily="{DynamicResource MaterialDesignFont}">
     <Window.DataContext>
         <viewModel:MainViewModel/>
     </Window.DataContext>
