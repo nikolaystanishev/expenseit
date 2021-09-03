@@ -18,37 +18,32 @@ namespace expensit.MVVM.Models.Communication
                 db.Add(expenseRecord);
                 db.SaveChanges();
             }
+        }
 
-            /*
-            using (var db = new BloggingContext())
+        public void Delete(string Id)
+        {
+            using (var db = new ExpenseContext())
             {
-                // Note: This sample requires the database to be created before running.
-
-                // Create
-                Console.WriteLine("Inserting a new blog");
-                db.Add(new Blog { Url = "http://blogs.msdn.com/adonet" });
-                db.SaveChanges();
-
-                // Read
-                Console.WriteLine("Querying for a blog");
-                var blog = db.Blogs
-                    .OrderBy(b => b.BlogId)
-                    .First();
-
-                // Update
-                Console.WriteLine("Updating the blog and adding a post");
-                blog.Url = "https://devblogs.microsoft.com/dotnet";
-                blog.Posts.Add(
-                    new Post { Title = "Hello World", Content = "I wrote an app using EF Core!" });
-                db.SaveChanges();
-
-                // Delete
-                Console.WriteLine("Delete the blog");
-                db.Remove(blog);
+                db.ExpenseRecords.Remove(GetExpenseRecord(Id));
                 db.SaveChanges();
             }
-            */
+        }
 
+        public void Update(ExpenseRecord expenseRecord)
+        {
+            using (var db = new ExpenseContext())
+            {
+                db.Update(expenseRecord);
+                db.SaveChanges();
+            }
+        }
+
+        public ExpenseRecord GetExpenseRecord(string Id)
+        {
+            using (var db = new ExpenseContext())
+            {
+                return db.ExpenseRecords.Include(er => er.Groups).Where(er => er.Id == Id).First();
+            }
         }
 
         public List<ExpenseRecord> GetAllExpenseRecords()

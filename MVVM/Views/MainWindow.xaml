@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:expensit"
         xmlns:viewModel="clr-namespace:expensit.MVVM.ViewModels"
         mc:Ignorable="d"
-        Height="600" Width="920"
+        Height="600" Width="1024"
         WindowStyle="None"
         ResizeMode="NoResize"
         AllowsTransparency="True"

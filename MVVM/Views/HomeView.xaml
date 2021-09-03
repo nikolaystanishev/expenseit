@@ -25,33 +25,34 @@
         <TextBlock Text="Expense Reports" Foreground="White" FontSize="28" HorizontalAlignment="Left" Margin="0,0,0,20"/>
 
         <WrapPanel Orientation="Vertical">
-            <DataGrid ItemsSource="{Binding ExpenseRecords}" AutoGenerateColumns="False" Background="Transparent" Width="800">
+            <DataGrid ItemsSource="{Binding ExpenseRecords}"
+                      AutoGenerateColumns="False" Background="Transparent" Width="800">
                 <DataGrid.Columns>
-                    <DataGridTemplateColumn Header="Amount" SortMemberPath="Amount">
+                    <DataGridTemplateColumn Header="Amount" SortMemberPath="Amount" IsReadOnly="False">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBox
-                                    Text="{Binding Amount}"
+                                    Text="{Binding Path=Amount, UpdateSourceTrigger=LostFocus}"
                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTemplateColumn Header="Type" SortMemberPath="Type">
+                    <DataGridTemplateColumn Header="Type" SortMemberPath="Type" IsReadOnly="False">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <ComboBox
                                     IsEditable="True"
                                     Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                                     ItemsSource="{Binding Source={StaticResource types}}"
-                                    Text="{Binding Type}"/>
+                                    Text="{Binding Path=Type, UpdateSourceTrigger=LostFocus}"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTemplateColumn Header="Pay Date" SortMemberPath="PayDate">
+                    <DataGridTemplateColumn Header="Pay Date" SortMemberPath="PayDate" IsReadOnly="False">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <DatePicker
-                                    SelectedDate="{Binding PayDate}"
+                                    SelectedDate="{Binding Path=PayDate, UpdateSourceTrigger=LostFocus}"
                                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
@@ -120,6 +121,38 @@
                                                 Kind="Plus"
                                                 Foreground="Black" RenderTransformOrigin="0.894,0.638"/>
                                         </Button.Content>
+                                    </Button>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Actions">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button
+                                        Width="50"
+                                        Height="25"
+                                        Margin="5,5,5,5"
+                                        Padding="0"
+                                        HorizontalContentAlignment="Center"
+                                        VerticalContentAlignment="Center"
+                                        BorderThickness="0"
+                                        Command="{Binding DataContext.UpdateExpenseRecordCommand, RelativeSource={RelativeSource AncestorType=UserControl, AncestorLevel=1}}"
+                                        CommandParameter="{Binding Id}">
+                                        Update
+                                    </Button>
+                                    <Button
+                                        Width="50"
+                                        Height="25"
+                                        Margin="5,5,5,5"
+                                        Padding="0"
+                                        HorizontalContentAlignment="Center"
+                                        VerticalContentAlignment="Center"
+                                        BorderThickness="0"
+                                        Command="{Binding DataContext.DeleteExpenseRecordCommand, RelativeSource={RelativeSource AncestorType=UserControl, AncestorLevel=1}}"
+                                        CommandParameter="{Binding Id}">
+                                        Delete
                                     </Button>
                                 </StackPanel>
                             </DataTemplate>

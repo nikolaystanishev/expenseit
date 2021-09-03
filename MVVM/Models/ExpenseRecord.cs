@@ -28,7 +28,7 @@ namespace expensit.MVVM.Models
         public ExpenseType Type { get; set; }
 
         public DateTime PayDate { get; set; }
-        
+
         public List<Group> Groups { get; } = new List<Group>();
     }
 }
