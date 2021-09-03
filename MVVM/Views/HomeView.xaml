@@ -26,7 +26,7 @@
 
         <WrapPanel Orientation="Vertical">
             <DataGrid ItemsSource="{Binding ExpenseRecords}"
-                      AutoGenerateColumns="False" Background="Transparent" Width="800">
+                      AutoGenerateColumns="False" Background="Transparent" Width="800" CanUserAddRows="False">
                 <DataGrid.Columns>
                     <DataGridTemplateColumn Header="Amount" SortMemberPath="Amount" IsReadOnly="False">
                         <DataGridTemplateColumn.CellTemplate>
