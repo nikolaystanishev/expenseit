@@ -27,7 +27,7 @@
         <WrapPanel Orientation="Vertical">
             <DataGrid ItemsSource="{Binding ExpenseRecords}" AutoGenerateColumns="False" Background="Transparent" Width="800">
                 <DataGrid.Columns>
-                    <DataGridTemplateColumn Header="Amount">
+                    <DataGridTemplateColumn Header="Amount" SortMemberPath="Amount">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBox
@@ -36,7 +36,7 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTemplateColumn Header="Type">
+                    <DataGridTemplateColumn Header="Type" SortMemberPath="Type">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <ComboBox
@@ -47,7 +47,7 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTemplateColumn Header="Pay Date">
+                    <DataGridTemplateColumn Header="Pay Date" SortMemberPath="PayDate">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <DatePicker
