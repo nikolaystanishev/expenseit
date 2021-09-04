@@ -21,7 +21,7 @@
     <Window.DataContext>
         <viewModel:MainViewModel/>
     </Window.DataContext>
-    
+
     <Border Background="#272537" CornerRadius="20">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -47,10 +47,7 @@
                              Style="{StaticResource MenuButtonTheme}" Command="{Binding StatisticsCommand}"/>
             </StackPanel>
 
-            <TextBox Width="250" Height="40" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="5"
-                     Grid.Column="1" Style="{StaticResource TextBoxTheme}"/>
-
-            <ContentControl Grid.Row="1" Grid.Column="1" Margin="10" Content="{Binding CurrentView}"/>
+            <ContentControl Grid.Column="1" Margin="10,30,10,10" Content="{Binding CurrentView}" Grid.RowSpan="2"/>
         </Grid>
     </Border>
 </Window>
