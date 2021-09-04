@@ -36,7 +36,8 @@
                           SelectedItem="Other" Text="{Binding Expense.Type}"/>
                 <DatePicker materialDesign:HintAssist.Hint="Pay Date" Margin="0 15 0 0"
                             Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
-                            Text="{Binding Expense.PayDate}"/>
+                            SelectedDate="{Binding Path=Expense.PayDate, Mode=TwoWay,
+                                           TargetNullValue={x:Static System:DateTime.Now}}"/>
                 <Separator Style="{StaticResource MaterialDesignSeparator}" />
                 <materialDesign:DialogHost CloseOnClickAway="True">
                     <materialDesign:DialogHost.DialogContent>

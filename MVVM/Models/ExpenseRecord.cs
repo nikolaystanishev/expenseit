@@ -20,11 +20,11 @@ namespace expensit.MVVM.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string Id { get; set; }
-        
+
         [Required]
         [Column(TypeName = "decimal(19,2)")]
         public decimal Amount { get; set; }
-        
+
         public ExpenseType Type { get; set; }
 
         public DateTime PayDate { get; set; }

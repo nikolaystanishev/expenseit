@@ -1,23 +1,19 @@
-﻿using expensit.MVVM.Models;
+﻿using expensit.Core;
 using expensit.MVVM.Models.Communication;
-using expensit.MVVM.Types;
-using System.Collections.Generic;
+using expensit.Core.Types;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
 
 namespace expensit.MVVM.ViewModels
 {
-    class StatisticsViewModel : INotifyPropertyChanged
+    internal class StatisticsViewModel : ObservableObject
     {
         private ExpenseRepository Repository { get; set; }
 
         private ExpenseGroupBy groupBy;
         public ExpenseGroupBy GroupBy
         {
-            get {
-                return groupBy;
-            }
+            get => groupBy;
             set
             {
                 groupBy = value;
@@ -25,10 +21,10 @@ namespace expensit.MVVM.ViewModels
                 switch (groupBy)
                 {
                     case ExpenseGroupBy.Group:
-                        ExpenseRecords = new ObservableCollection<ExpenseGroup>(Repository.GetAllExpenseRecords().Select(er => new {
-                            Amount = er.Amount,
-                            Groups = string.Join("; ", er.Groups.OrderBy(g => g.Name).Select(g => g.Name))
-                        }).GroupBy(
+                        ExpenseGroups = new ObservableCollection<ExpenseGroup>(Repository.GetAllExpenseRecords().Select(er => (
+                            Amount: er.Amount,
+                            Groups: string.Join("; ", er.Groups.OrderBy(g => g.Name).Select(g => g.Name))
+                        )).GroupBy(
                             er => er.Groups,
                             er => er.Amount,
                             (key, group) => new ExpenseGroup(
@@ -37,7 +33,7 @@ namespace expensit.MVVM.ViewModels
                         )).ToList());
                         break;
                     case ExpenseGroupBy.Type:
-                        ExpenseRecords = new ObservableCollection<ExpenseGroup>(Repository.GetAllExpenseRecords().GroupBy(
+                        ExpenseGroups = new ObservableCollection<ExpenseGroup>(Repository.GetAllExpenseRecords().GroupBy(
                             er => er.Type,
                             er => er.Amount,
                             (key, group) => new ExpenseGroup(
@@ -46,7 +42,7 @@ namespace expensit.MVVM.ViewModels
                         )).ToList());
                         break;
                     case ExpenseGroupBy.Month:
-                        ExpenseRecords = new ObservableCollection<ExpenseGroup>(Repository.GetAllExpenseRecords().GroupBy(
+                        ExpenseGroups = new ObservableCollection<ExpenseGroup>(Repository.GetAllExpenseRecords().GroupBy(
                             er => er.PayDate.Month.ToString() + "/" + er.PayDate.Year.ToString(),
                             er => er.Amount,
                             (key, group) => new ExpenseGroup(
@@ -54,27 +50,20 @@ namespace expensit.MVVM.ViewModels
                                 group.Sum(er => er)
                         )).ToList());
                         break;
+                    default:
+                        break;
                 }
 
-                OnPropertyRaised(nameof(GroupBy));
-                OnPropertyRaised(nameof(ExpenseRecords));
+                OnPropertyChanged(nameof(GroupBy));
+                OnPropertyChanged(nameof(ExpenseGroups));
             }
         }
-        public ObservableCollection<ExpenseGroup> ExpenseRecords { get; set; }
+        public ObservableCollection<ExpenseGroup> ExpenseGroups { get; private set; }
 
         public StatisticsViewModel()
         {
             Repository = new ExpenseRepository();
             GroupBy = ExpenseGroupBy.Group;
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void OnPropertyRaised(string propertyname)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyname));
-            }
         }
     }
 }

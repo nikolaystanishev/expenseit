@@ -1,4 +1,4 @@
-﻿namespace expensit.MVVM.Types
+﻿namespace expensit.Core.Types
 {
     public enum ExpenseGroupBy
     {

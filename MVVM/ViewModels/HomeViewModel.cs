@@ -2,17 +2,15 @@
 using expensit.Core;
 using expensit.MVVM.Models;
 using expensit.MVVM.Models.Communication;
-using System;
 using System.Collections.Generic;
-using System.Windows.Controls;
 
 namespace expensit.MVVM.ViewModels
 {
-    class HomeViewModel
+    internal class HomeViewModel : ObservableObject
     {
         private ExpenseRepository Repository { get; set; }
 
-        public String NewGroup { get; set; }
+        public string NewGroup { get; set; }
 
         public List<ExpenseRecord> ExpenseRecords { get; set; }
 
@@ -27,26 +25,36 @@ namespace expensit.MVVM.ViewModels
         public HomeViewModel()
         {
             Repository = new ExpenseRepository();
-            ExpenseRecords = Repository.GetAllExpenseRecords();
+            LoadExpenseRecord();
 
             AddGroupFromExpenseCommand = new RelayCommand(ExpenseRecordId =>
             {
                 Repository.AddGroupToExpense(NewGroup, ExpenseRecordId as string);
+                LoadExpenseRecord();
             });
             RemoveGroupFromExpenseCommand = new RelayCommand(GroupId =>
             {
                 Repository.RemoveGroupFromExpense(GroupId as string);
+                LoadExpenseRecord();
             });
 
             UpdateExpenseRecordCommand = new RelayCommand(ExpenseRecordId =>
             {
                 ExpenseRecord expenseRecord = ExpenseRecords.Find(er => er.Id == ExpenseRecordId as string);
                 Repository.Update(expenseRecord);
+                LoadExpenseRecord();
             });
             DeleteExpenseRecordCommand = new RelayCommand(ExpenseRecordId =>
             {
                 Repository.Delete(ExpenseRecordId as string);
+                LoadExpenseRecord();
             });
+        }
+
+        private void LoadExpenseRecord()
+        {
+            ExpenseRecords = Repository.GetAllExpenseRecords();
+            OnPropertyChanged(nameof(ExpenseRecords));
         }
     }
 }

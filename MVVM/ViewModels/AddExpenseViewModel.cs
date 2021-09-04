@@ -4,21 +4,30 @@ using expensit.MVVM.Models.Communication;
 
 namespace expensit.MVVM.ViewModels
 {
-    class AddExpenseViewModel
+    internal class AddExpenseViewModel : ObservableObject
     {
         private ExpenseRepository Repository { get; set; }
+
         public RelayCommand CreateExpenseCommand { get; set; }
 
         public ExpenseRecord Expense { get; set; }
 
         public AddExpenseViewModel()
         {
-            Expense = new ExpenseRecord();
+            Expense = new ExpenseRecord
+            {
+                PayDate = System.DateTime.Now
+            };
             Repository = new ExpenseRepository();
+
             CreateExpenseCommand = new RelayCommand(o =>
             {
                 Repository.Create(Expense);
-                Expense = new ExpenseRecord();
+                Expense = new ExpenseRecord
+                {
+                    PayDate = System.DateTime.Now
+                };
+                OnPropertyChanged(nameof(Expense));
             });
         }
     }

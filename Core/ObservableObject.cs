@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace expensit.Core
 {
-    class ObservableObject : INotifyPropertyChanged
+    public abstract class ObservableObject : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

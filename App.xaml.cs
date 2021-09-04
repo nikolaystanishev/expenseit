@@ -10,7 +10,7 @@ namespace expensit
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            MainWindow window = new MainWindow();
+            MainWindow window = new();
             window.Show();
 
             base.OnStartup(e);
