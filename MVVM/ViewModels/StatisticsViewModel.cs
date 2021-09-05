@@ -6,9 +6,9 @@ using System.Linq;
 
 namespace expensit.MVVM.ViewModels
 {
-    internal class StatisticsViewModel : ObservableObject
+    public class StatisticsViewModel : ObservableObject, IStatisticsViewModel
     {
-        private ExpenseRepository Repository { get; set; }
+        private IExpenseRepository Repository { get; set; }
 
         private ExpenseGroupBy groupBy;
         public ExpenseGroupBy GroupBy
@@ -60,10 +60,15 @@ namespace expensit.MVVM.ViewModels
         }
         public ObservableCollection<ExpenseGroup> ExpenseGroups { get; private set; }
 
-        public StatisticsViewModel()
+        public StatisticsViewModel(IExpenseRepository expenseRepository)
         {
-            Repository = new ExpenseRepository();
+            Repository = expenseRepository;
             GroupBy = ExpenseGroupBy.Group;
+        }
+
+        public void GroupByCurrent()
+        {
+            GroupBy = groupBy;
         }
     }
 }

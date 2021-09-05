@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using expensit.MVVM.ViewModels;
+using System.Windows;
 
 namespace expensit.Views
 {
@@ -7,9 +8,11 @@ namespace expensit.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+
+        public MainWindow(IMainViewModel mainViewModel)
         {
             InitializeComponent();
+            DataContext = mainViewModel;
         }
     }
 }

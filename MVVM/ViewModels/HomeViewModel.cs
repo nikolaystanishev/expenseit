@@ -6,9 +6,9 @@ using System.Collections.Generic;
 
 namespace expensit.MVVM.ViewModels
 {
-    internal class HomeViewModel : ObservableObject
+    public class HomeViewModel : ObservableObject, IHomeViewModel
     {
-        private ExpenseRepository Repository { get; set; }
+        private IExpenseRepository Repository { get; set; }
 
         public string NewGroup { get; set; }
 
@@ -22,9 +22,9 @@ namespace expensit.MVVM.ViewModels
 
         public RelayCommand DeleteExpenseRecordCommand { get; set; }
 
-        public HomeViewModel()
+        public HomeViewModel(IExpenseRepository expenseRepository)
         {
-            Repository = new ExpenseRepository();
+            Repository = expenseRepository;
             LoadExpenseRecord();
 
             AddGroupFromExpenseCommand = new RelayCommand(ExpenseRecordId =>
@@ -51,7 +51,7 @@ namespace expensit.MVVM.ViewModels
             });
         }
 
-        private void LoadExpenseRecord()
+        public void LoadExpenseRecord()
         {
             ExpenseRecords = Repository.GetAllExpenseRecords();
             OnPropertyChanged(nameof(ExpenseRecords));

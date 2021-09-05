@@ -7,51 +7,43 @@ using System.Linq;
 
 namespace expensit.MVVM.Models.Communication
 {
-    internal class ExpenseRepository
+    internal class ExpenseRepository : IExpenseRepository
     {
         private readonly Random rnd = new();
 
+        private readonly ExpenseContext db;
+
+        public ExpenseRepository(ExpenseContext expenseContext)
+        {
+            db = expenseContext;
+        }
+
         public void Create(ExpenseRecord expenseRecord)
         {
-            using (var db = new ExpenseContext())
-            {
-                db.Add(expenseRecord);
-                db.SaveChanges();
-            }
+            db.Add(expenseRecord);
+            db.SaveChanges();
         }
 
         public void Delete(string Id)
         {
-            using (var db = new ExpenseContext())
-            {
-                db.ExpenseRecords.Remove(GetExpenseRecord(Id));
-                db.SaveChanges();
-            }
+            db.ExpenseRecords.Remove(GetExpenseRecord(Id));
+            db.SaveChanges();
         }
 
         public void Update(ExpenseRecord expenseRecord)
         {
-            using (var db = new ExpenseContext())
-            {
-                db.Update(expenseRecord);
-                db.SaveChanges();
-            }
+            db.Update(expenseRecord);
+            db.SaveChanges();
         }
 
         public ExpenseRecord GetExpenseRecord(string Id)
         {
-            using (var db = new ExpenseContext())
-            {
-                return db.ExpenseRecords.Include(er => er.Groups).Where(er => er.Id == Id).First();
-            }
+            return db.ExpenseRecords.Include(er => er.Groups).Where(er => er.Id == Id).First();
         }
 
         public List<ExpenseRecord> GetAllExpenseRecords()
         {
-            using (var db = new ExpenseContext())
-            {
-                return db.ExpenseRecords.Include(er => er.Groups).AsEnumerable().ToList();
-            }
+            return db.ExpenseRecords.Include(er => er.Groups).AsEnumerable().ToList();
         }
 
         public void AddGroupToExpense(string groupName, string expenseRecordId)
@@ -60,35 +52,30 @@ namespace expensit.MVVM.Models.Communication
             {
                 return;
             }
-            using (var db = new ExpenseContext())
+
+            Group group = new()
             {
-                Group group = new()
-                {
-                    Name = groupName,
-                    Color = ColorTranslator.ToHtml(Color.FromArgb(rnd.Next(256), rnd.Next(256), rnd.Next(256)))
-                };
+                Name = groupName,
+                Color = ColorTranslator.ToHtml(Color.FromArgb(rnd.Next(256), rnd.Next(256), rnd.Next(256)))
+            };
 
-                Group colorGroup = db.Groups.FirstOrDefault(g => g.Name == groupName);
-                if (colorGroup != null)
-                {
-                    group.Color = colorGroup.Color;
-                }
-                db.Add(group);
-
-                db.ExpenseRecords.Include(er => er.Groups).Where(er => er.Id == expenseRecordId).First().Groups.Add(group);
-                db.SaveChanges();
+            Group colorGroup = db.Groups.FirstOrDefault(g => g.Name == groupName);
+            if (colorGroup != null)
+            {
+                group.Color = colorGroup.Color;
             }
+            db.Add(group);
+
+            db.ExpenseRecords.Include(er => er.Groups).Where(er => er.Id == expenseRecordId).First().Groups.Add(group);
+            db.SaveChanges();
         }
 
         public void RemoveGroupFromExpense(string GroupId)
         {
-            using (var db = new ExpenseContext())
-            {
-                Group group = db.Groups.FirstOrDefault(g => g.Id == GroupId);
-                db.ExpenseRecords.Include(er => er.Groups).ForEachAsync(er => er.Groups.Remove(group));
-                db.Groups.Remove(group);
-                db.SaveChanges();
-            }
+            Group group = db.Groups.FirstOrDefault(g => g.Id == GroupId);
+            db.ExpenseRecords.Include(er => er.Groups).ForEachAsync(er => er.Groups.Remove(group));
+            db.Groups.Remove(group);
+            db.SaveChanges();
         }
     }
 }

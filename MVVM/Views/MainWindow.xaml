@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:expensit"
-        xmlns:viewModel="clr-namespace:expensit.MVVM.ViewModels"
         mc:Ignorable="d"
         Height="600" Width="1024"
         WindowStyle="None"
@@ -17,10 +16,6 @@
         TextOptions.TextRenderingMode="Auto"
         Background="Transparent"
         FontFamily="{DynamicResource MaterialDesignFont}">
-    <Window.DataContext>
-        <viewModel:MainViewModel/>
-    </Window.DataContext>
-
     <Border Background="#272537" CornerRadius="20">
         <Grid>
             <Grid.ColumnDefinitions>
