@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31321.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "expensit", "expensit.csproj", "{7AFA797A-965F-4FF6-9060-3C3CDD1B49A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "expensit.UI", ".\expensit.UI\expensit.UI.csproj", "{7AFA797A-965F-4FF6-9060-3C3CDD1B49A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "expensit.DataAccess", ".\expensit.DataAccess\expensit.DataAccess.csproj", "{7D943EEC-8B41-4475-9FE9-39161D1C2CA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "expensit.Model", ".\expensit.Model\expensit.Model.csproj", "{DF8E0BD7-8176-494A-8274-5E55F69B302C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{7AFA797A-965F-4FF6-9060-3C3CDD1B49A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7AFA797A-965F-4FF6-9060-3C3CDD1B49A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7AFA797A-965F-4FF6-9060-3C3CDD1B49A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D943EEC-8B41-4475-9FE9-39161D1C2CA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D943EEC-8B41-4475-9FE9-39161D1C2CA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D943EEC-8B41-4475-9FE9-39161D1C2CA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D943EEC-8B41-4475-9FE9-39161D1C2CA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF8E0BD7-8176-494A-8274-5E55F69B302C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF8E0BD7-8176-494A-8274-5E55F69B302C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF8E0BD7-8176-494A-8274-5E55F69B302C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF8E0BD7-8176-494A-8274-5E55F69B302C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
