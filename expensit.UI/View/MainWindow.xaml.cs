@@ -11,5 +11,10 @@ namespace expensit.UI.View
             InitializeComponent();
             DataContext = mainViewModel;
         }
+
+        private void MoveWindow(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
     }
 }

@@ -6,8 +6,7 @@
              xmlns:System="clr-namespace:System;assembly=mscorlib"
              xmlns:Models="clr-namespace:expensit.Model.Model;assembly=expensit.Model"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
+             mc:Ignorable="d"
              Background="Transparent">
     <UserControl.Resources>
         <ObjectDataProvider x:Key="types" MethodName="GetValues" ObjectType="{x:Type System:Enum}">
@@ -21,7 +20,7 @@
 
         <WrapPanel Orientation="Vertical">
             <DataGrid ItemsSource="{Binding ExpenseRecords}"
-                      AutoGenerateColumns="False" Background="Transparent" Width="800" CanUserAddRows="False">
+                      AutoGenerateColumns="False" Background="Transparent" CanUserAddRows="False">
                 <DataGrid.Columns>
                     <DataGridTemplateColumn Header="Amount" SortMemberPath="Amount" IsReadOnly="False">
                         <DataGridTemplateColumn.CellTemplate>

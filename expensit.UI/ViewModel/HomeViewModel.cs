@@ -53,7 +53,6 @@ namespace expensit.UI.ViewModel
             {
                 ExpenseRecord expenseRecord = new List<ExpenseRecord>(ExpenseRecords).Find(er => er.Id == ExpenseRecordId as string);
                 this.expenseDataSevice.Update(expenseRecord);
-                Load();
             });
             DeleteExpenseRecordCommand = new RelayCommand(ExpenseRecordId =>
             {

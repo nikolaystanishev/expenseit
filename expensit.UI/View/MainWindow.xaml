@@ -1,12 +1,14 @@
 ﻿<Window x:Class="expensit.UI.View.MainWindow"
+        x:Name="MainWindowElement"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Height="600" Width="1024"
         WindowStyle="None"
-        ResizeMode="NoResize"
+        ResizeMode="CanResizeWithGrip"
         AllowsTransparency="True"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -23,12 +25,86 @@
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="75"/>
+                <RowDefinition Height="35"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <TextBlock Text="ExpenseIt" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White"
-                       FontSize="22" Margin="20,0,0,0"/>
+            <TextBlock
+                Grid.Row="0" Grid.Column="0"
+                Text="ExpenseIt"
+                VerticalAlignment="Center" HorizontalAlignment="Left"
+                Foreground="White" FontSize="22"
+                Margin="20,0,0,0"
+                MouseDown="MoveWindow"/>
+
+            <StackPanel
+                Grid.Row="0" Grid.Column="1"
+                Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button
+                    Width="20"
+                    Height="20"
+                    Margin="5,5,5,5"
+                    Padding="0"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    BorderThickness="0"
+                    Command="{Binding MinimizeCommand}"
+                    CommandParameter="{Binding ElementName=MainWindowElement}">
+                    <Button.Content>
+                        <materialDesign:PackIcon
+                            Width="15"
+                            Height="15"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Margin="5,5,5,5"
+                            Kind="WindowMinimize"
+                            Foreground="Black"/>
+                    </Button.Content>
+                </Button>
+                <Button
+                    Width="20"
+                    Height="20"
+                    Margin="5,5,5,5"
+                    Padding="0"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    BorderThickness="0"
+                    Command="{Binding MaximizeCommand}"
+                    CommandParameter="{Binding ElementName=MainWindowElement}">
+                    <Button.Content>
+                        <materialDesign:PackIcon
+                            Width="15"
+                            Height="15"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Margin="5,5,5,5"
+                            Kind="WindowMaximize"
+                            Foreground="Black"/>
+                    </Button.Content>
+                </Button>
+                <Button
+                    Width="20"
+                    Height="20"
+                    Margin="5,5,10,5"
+                    Padding="0"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    BorderThickness="0"
+                    Command="{Binding CloseCommand}"
+                    CommandParameter="{Binding ElementName=MainWindowElement}">
+                    <Button.Content>
+                        <materialDesign:PackIcon
+                            Width="15"
+                            Height="15"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Margin="5,5,5,5"
+                            Kind="CloseBold"
+                            Foreground="Black"/>
+                    </Button.Content>
+                </Button>
+
+            </StackPanel>
 
             <StackPanel Grid.Row="1">
                 <RadioButton Content="Home" Height="50" Foreground="White" FontSize="14"
@@ -40,7 +116,7 @@
                              Style="{StaticResource MenuButtonTheme}" Command="{Binding StatisticsCommand}"/>
             </StackPanel>
 
-            <ContentControl Grid.Column="1" Margin="10,30,10,10" Content="{Binding CurrentView}" Grid.RowSpan="2"/>
+            <ContentControl Grid.Column="1" Content="{Binding CurrentView}" Grid.Row="2"/>
         </Grid>
     </Border>
 </Window>
