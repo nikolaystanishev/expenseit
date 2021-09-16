@@ -7,7 +7,7 @@ using System.Collections.ObjectModel;
 
 namespace expensit.UI.ViewModel
 {
-    public class HomeViewModel : ObservableObject, IHomeViewModel
+    public class HomeViewModel : ProfileViewModel, IHomeViewModel
     {
         private readonly IExpenseDataSevice expenseDataSevice;
 
@@ -32,7 +32,7 @@ namespace expensit.UI.ViewModel
 
         public RelayCommand DeleteExpenseRecordCommand { get; set; }
 
-        public HomeViewModel(IExpenseDataSevice expenseDataSevice)
+        public HomeViewModel(IExpenseDataSevice expenseDataSevice, IProfileDataService profileDataService) : base(profileDataService)
         {
             this.expenseDataSevice = expenseDataSevice;
             ExpenseRecords = new ObservableCollection<ExpenseRecord>();
@@ -61,10 +61,21 @@ namespace expensit.UI.ViewModel
             });
         }
 
-        public void Load()
+        public override void ApplyCurrentProfileChange()
+        {
+            Load();
+        }
+
+        private void Load()
         {
             ExpenseRecords.Clear();
-            foreach (var expenseRecord in expenseDataSevice.GetAll())
+
+            if (CurrentProfile == null)
+            {
+                return;
+            }
+
+            foreach (var expenseRecord in CurrentProfile.ExpenseRecords)
             {
                 ExpenseRecords.Add(expenseRecord);
             }

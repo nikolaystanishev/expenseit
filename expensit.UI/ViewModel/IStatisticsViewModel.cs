@@ -1,7 +1,8 @@
-﻿namespace expensit.UI.ViewModel
+﻿using expensit.UI.Core;
+
+namespace expensit.UI.ViewModel
 {
-    public interface IStatisticsViewModel
+    public interface IStatisticsViewModel : IViewModelBase
     {
-        void Load();
     }
 }

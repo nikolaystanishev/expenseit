@@ -1,7 +1,8 @@
-﻿namespace expensit.UI.ViewModel
+﻿using expensit.UI.Core;
+
+namespace expensit.UI.ViewModel
 {
-    public interface IHomeViewModel
+    public interface IHomeViewModel : IViewModelBase
     {
-        void Load();
     }
 }

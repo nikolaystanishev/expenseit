@@ -1,6 +1,8 @@
-﻿namespace expensit.UI.ViewModel
+﻿using expensit.UI.Core;
+
+namespace expensit.UI.ViewModel
 {
-    public interface IMainViewModel
+    public interface IMainViewModel : IViewModelBase
     {
     }
 }

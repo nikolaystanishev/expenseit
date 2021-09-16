@@ -9,8 +9,8 @@ using expensit.DataAccess;
 namespace expensit.DataAccess.Migrations
 {
     [DbContext(typeof(ExpenseContext))]
-    [Migration("20210906155738_InitializeDatabase")]
-    partial class InitializeDatabase
+    [Migration("20210912110024_ProfileSupport")]
+    partial class ProfileSupport
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -30,10 +30,15 @@ namespace expensit.DataAccess.Migrations
                     b.Property<DateTime>("PayDate")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("ProfileId")
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("Type")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ProfileId");
 
                     b.ToTable("ExpenseRecords");
                 });
@@ -62,6 +67,28 @@ namespace expensit.DataAccess.Migrations
                     b.ToTable("Groups");
                 });
 
+            modelBuilder.Entity("expensit.Model.Model.Profile", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Profiles");
+                });
+
+            modelBuilder.Entity("expensit.Model.Model.ExpenseRecord", b =>
+                {
+                    b.HasOne("expensit.Model.Model.Profile", null)
+                        .WithMany("ExpenseRecords")
+                        .HasForeignKey("ProfileId");
+                });
+
             modelBuilder.Entity("expensit.Model.Model.Group", b =>
                 {
                     b.HasOne("expensit.Model.Model.ExpenseRecord", null)
@@ -72,6 +99,11 @@ namespace expensit.DataAccess.Migrations
             modelBuilder.Entity("expensit.Model.Model.ExpenseRecord", b =>
                 {
                     b.Navigation("Groups");
+                });
+
+            modelBuilder.Entity("expensit.Model.Model.Profile", b =>
+                {
+                    b.Navigation("ExpenseRecords");
                 });
 #pragma warning restore 612, 618
         }

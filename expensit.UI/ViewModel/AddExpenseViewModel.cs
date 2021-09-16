@@ -4,10 +4,8 @@ using expensit.UI.Data;
 
 namespace expensit.UI.ViewModel
 {
-    public class AddExpenseViewModel : ObservableObject, IAddExpenseViewModel
+    public class AddExpenseViewModel : ProfileViewModel, IAddExpenseViewModel
     {
-        private readonly IExpenseDataSevice expenseDataSevice;
-
         public RelayCommand CreateExpenseCommand { get; set; }
 
         private ExpenseRecord expenseRecord;
@@ -21,10 +19,8 @@ namespace expensit.UI.ViewModel
             }
         }
 
-        public AddExpenseViewModel(IExpenseDataSevice expenseDataSevice)
+        public AddExpenseViewModel(IProfileDataService profileDataService) : base(profileDataService)
         {
-            this.expenseDataSevice = expenseDataSevice;
-
             Expense = new ExpenseRecord
             {
                 PayDate = System.DateTime.Now
@@ -32,12 +28,18 @@ namespace expensit.UI.ViewModel
 
             CreateExpenseCommand = new RelayCommand(o =>
             {
-                this.expenseDataSevice.Create(Expense);
+                if (CurrentProfile == null)
+                {
+                    return;
+                }
+
+                this.profileDataService.AddExpenseRecord(CurrentProfile, Expense);
                 Expense = new ExpenseRecord
                 {
                     PayDate = System.DateTime.Now
                 };
             });
+
         }
     }
 }

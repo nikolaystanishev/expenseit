@@ -5,6 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:Types="clr-namespace:expensit.UI.Core.Types"
         mc:Ignorable="d"
         Height="600" Width="1024"
         WindowStyle="None"
@@ -40,6 +41,15 @@
             <StackPanel
                 Grid.Row="0" Grid.Column="1"
                 Orientation="Horizontal" HorizontalAlignment="Right">
+                <ComboBox
+                    materialDesign:HintAssist.Hint="Profile"
+                    IsEditable="True" Margin="0 0 20 0"
+                    Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                    ItemsSource="{Binding Profiles}"
+                    DisplayMemberPath="Name"
+                    SelectedValuePath="Id"
+                    SelectedItem="{Binding CurrentProfile}"
+                    Text="Choose Profile"/>
                 <Button
                     Width="20"
                     Height="20"
@@ -109,11 +119,20 @@
             <StackPanel Grid.Row="1">
                 <RadioButton Content="Home" Height="50" Foreground="White" FontSize="14"
                              Style="{StaticResource MenuButtonTheme}" IsChecked="True"
-                             Command="{Binding HomeViewCommand}"/>
-                <RadioButton Content="Add expense" Height="50" Foreground="White" FontSize="14"
-                             Style="{StaticResource MenuButtonTheme}" Command="{Binding AddExpenseCommand}"/>
+                             Command="{Binding ChangeViewCommand}"
+                             CommandParameter="{x:Static Types:ViewModelTypes.Home}"/>
+                <RadioButton Content="Add Expense" Height="50" Foreground="White" FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding ChangeViewCommand}"
+                             CommandParameter="{x:Static Types:ViewModelTypes.AddExpense}"/>
                 <RadioButton Content="Statistics" Height="50" Foreground="White" FontSize="14"
-                             Style="{StaticResource MenuButtonTheme}" Command="{Binding StatisticsCommand}"/>
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding ChangeViewCommand}"
+                             CommandParameter="{x:Static Types:ViewModelTypes.Statistics}"/>
+                <RadioButton Content="Add Profile" Height="50" Foreground="White" FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding ChangeViewCommand}"
+                             CommandParameter="{x:Static Types:ViewModelTypes.AddProfile}"/>
             </StackPanel>
 
             <ContentControl Grid.Column="1" Content="{Binding CurrentView}" Grid.Row="2"/>

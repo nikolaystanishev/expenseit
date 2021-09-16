@@ -1,12 +1,10 @@
 ﻿
 using expensit.Model.Model;
-using expensit.UI.DataAccess;
+using expensit.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace expensit.UI.Data
 {
@@ -46,12 +44,6 @@ namespace expensit.UI.Data
             db.SaveChanges();
         }
 
-        public void Create(ExpenseRecord expenseRecord)
-        {
-            db.Add(expenseRecord);
-            db.SaveChanges();
-        }
-
         public void Delete(string Id)
         {
             db.ExpenseRecords.Remove(Get(Id));
@@ -61,11 +53,6 @@ namespace expensit.UI.Data
         public ExpenseRecord Get(string Id)
         {
             return db.ExpenseRecords.Include(er => er.Groups).Where(er => er.Id == Id).First();
-        }
-
-        public IEnumerable<ExpenseRecord> GetAll()
-        {
-            return db.ExpenseRecords.Include(er => er.Groups).AsEnumerable();
         }
 
         public void RemoveGroup(string GroupId)

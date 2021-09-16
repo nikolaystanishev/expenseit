@@ -26,6 +26,10 @@
             <DataTemplate DataType="{x:Type viewModel:StatisticsViewModel}">
                 <view:StatisticsView/>
             </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:AddProfileViewModel}">
+                <view:AddProfileVIew/>
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

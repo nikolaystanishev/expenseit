@@ -1,5 +1,4 @@
-﻿using expensit.UI.ViewModel;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 
 namespace expensit.UI.View
 {
@@ -8,12 +7,6 @@ namespace expensit.UI.View
         public StatisticsView()
         {
             InitializeComponent();
-            Loaded += StatisticsView_Loaded;
-        }
-
-        private void StatisticsView_Loaded(object sender, System.Windows.RoutedEventArgs e)
-        {
-            (DataContext as IStatisticsViewModel).Load();
         }
     }
 }

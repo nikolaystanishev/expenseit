@@ -6,10 +6,8 @@ using expensit.UI.Data;
 
 namespace expensit.UI.ViewModel
 {
-    public class StatisticsViewModel : ObservableObject, IStatisticsViewModel
+    public class StatisticsViewModel : ProfileViewModel, IStatisticsViewModel
     {
-        private readonly IExpenseDataSevice expenseDataService;
-
         private ExpenseGroupBy groupBy;
         public ExpenseGroupBy GroupBy
         {
@@ -17,11 +15,17 @@ namespace expensit.UI.ViewModel
             set
             {
                 groupBy = value;
+                OnPropertyChanged();
+
+                if (CurrentProfile == null)
+                {
+                    return;
+                }
 
                 switch (groupBy)
                 {
                     case ExpenseGroupBy.Group:
-                        ExpenseGroups = new ObservableCollection<ExpenseGroup>(expenseDataService.GetAll().Select(er => (
+                        ExpenseGroups = new ObservableCollection<ExpenseGroup>(CurrentProfile.ExpenseRecords.Select(er => (
                             er.Amount,
                             Groups: string.Join("; ", er.Groups.OrderBy(g => g.Name).Select(g => g.Name))
                         )).GroupBy(
@@ -33,7 +37,7 @@ namespace expensit.UI.ViewModel
                         )).ToList());
                         break;
                     case ExpenseGroupBy.Type:
-                        ExpenseGroups = new ObservableCollection<ExpenseGroup>(expenseDataService.GetAll().GroupBy(
+                        ExpenseGroups = new ObservableCollection<ExpenseGroup>(CurrentProfile.ExpenseRecords.GroupBy(
                             er => er.Type,
                             er => er.Amount,
                             (key, group) => new ExpenseGroup(
@@ -42,7 +46,7 @@ namespace expensit.UI.ViewModel
                         )).ToList());
                         break;
                     case ExpenseGroupBy.Month:
-                        ExpenseGroups = new ObservableCollection<ExpenseGroup>(expenseDataService.GetAll().GroupBy(
+                        ExpenseGroups = new ObservableCollection<ExpenseGroup>(CurrentProfile.ExpenseRecords.GroupBy(
                             er => er.PayDate.Month.ToString() + "/" + er.PayDate.Year.ToString(),
                             er => er.Amount,
                             (key, group) => new ExpenseGroup(
@@ -54,19 +58,22 @@ namespace expensit.UI.ViewModel
                         break;
                 }
 
-                OnPropertyChanged();
                 OnPropertyChanged(nameof(ExpenseGroups));
             }
         }
         public ObservableCollection<ExpenseGroup> ExpenseGroups { get; private set; }
 
-        public StatisticsViewModel(IExpenseDataSevice expenseDataService)
+        public StatisticsViewModel(IProfileDataService profileDataService) : base(profileDataService)
         {
-            this.expenseDataService = expenseDataService;
             GroupBy = ExpenseGroupBy.Group;
         }
 
-        public void Load()
+        public override void ApplyCurrentProfileChange()
+        {
+            Load();
+        }
+
+        private void Load()
         {
             GroupBy = groupBy;
         }

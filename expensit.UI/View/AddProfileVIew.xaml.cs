@@ -2,9 +2,9 @@
 
 namespace expensit.UI.View
 {
-    public partial class HomeView : UserControl
+    public partial class AddProfileVIew : UserControl
     {
-        public HomeView()
+        public AddProfileVIew()
         {
             InitializeComponent();
         }
