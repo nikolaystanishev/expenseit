@@ -30,5 +30,7 @@ namespace expensit.Model.Model
         public DateTime PayDate { get; set; }
 
         public List<Group> Groups { get; } = new List<Group>();
+
+        public virtual string ProfileId { get; set; }
     }
 }

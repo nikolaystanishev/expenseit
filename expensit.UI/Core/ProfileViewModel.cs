@@ -3,7 +3,7 @@ using expensit.UI.Data;
 
 namespace expensit.UI.Core
 {
-    public abstract class ProfileViewModel : ObservableObject, IViewModelBase
+    public abstract class ProfileViewModel : ObservableObject
     {
         protected readonly IProfileDataService profileDataService;
 

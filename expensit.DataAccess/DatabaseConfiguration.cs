@@ -11,5 +11,10 @@ namespace expensit.DataAccess
         {
             options.UseSqlite(@$"Data Source={baseDir}\expenseit.db");
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            ExpenseDBInitializer.Seed(modelBuilder);
+        }
     }
 }

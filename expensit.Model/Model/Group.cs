@@ -15,5 +15,7 @@ namespace expensit.Model.Model
 
         [Required]
         public string Color { get; set; }
+
+        public virtual string ExpenseRecordId { get; set; }
     }
 }
