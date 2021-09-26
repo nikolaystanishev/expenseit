@@ -1,0 +1,375 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="expensit.UI.Core.Startup.Bootstarapper">
+    <Position X="5.25" Y="2.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Core\Startup\Bootstarapper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="expensit.UI.Core.Types.ExpenseGroup">
+    <Position X="7.75" Y="14.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Types\ExpenseGroupBy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="expensit.UI.Core.ObservableObject">
+    <Position X="4.5" Y="6.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\ObservableObject.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="expensit.UI.Core.ProfileViewModel">
+    <Position X="5.5" Y="8.5" Width="2.5" />
+    <AssociationLine Name="currentProfile" Type="expensit.Model.Model.Profile" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.688" Y="9.925" />
+        <Point X="7.688" Y="13.562" />
+        <Point X="5.25" Y="13.562" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="profileDataService" Type="expensit.UI.Data.IProfileDataService" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="8" Y="9.188" />
+        <Point X="9.792" Y="9.188" Type="JumpStart" />
+        <Point X="9.958" Y="9.188" Type="JumpEnd" />
+        <Point X="15.188" Y="9.188" />
+        <Point X="15.188" Y="14.406" />
+        <Point X="15.438" Y="14.406" />
+        <Point X="15.438" Y="14.5" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="CurrentProfile" Type="expensit.Model.Model.Profile" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.688" Y="9.925" />
+        <Point X="7.688" Y="13.937" />
+        <Point X="5.25" Y="13.937" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAIAAAAAAAAAAAAAAAAAAIAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Core\ProfileViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="currentProfile" />
+      <Field Name="profileDataService" />
+      <Property Name="CurrentProfile" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="expensit.UI.Core.RelayCommand" BaseTypeListCollapsed="true">
+    <Position X="5" Y="16" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEACAAQAAECAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\RelayCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="expensit.UI.Data.ExpenseDataSevice" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="18.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQEAAAAAAAQAABAAAAAAAAAAAEAAAAAAAAAAABAAEA=</HashCode>
+      <FileName>Data\ExpenseDataSevice.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="db" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="expensit.UI.Data.ProfileDataService" BaseTypeListCollapsed="true">
+    <Position X="14" Y="18.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAABAAAAAAAAAAAAAAEAAAgAAAAAAAAE=</HashCode>
+      <FileName>Data\ProfileDataService.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="db" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="expensit.UI.View.AddExpenseView" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\AddExpenseView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="expensit.UI.View.AddProfileVIew" BaseTypeListCollapsed="true">
+    <Position X="8" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\AddProfileVIew.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="expensit.UI.View.HomeView" BaseTypeListCollapsed="true">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\HomeView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="expensit.UI.View.MainWindow" BaseTypeListCollapsed="true">
+    <Position X="4.25" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="expensit.UI.View.StatisticsView" BaseTypeListCollapsed="true">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\StatisticsView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="expensit.UI.ViewModel.AddExpenseViewModel">
+    <Position X="0.5" Y="10.5" Width="3" />
+    <AssociationLine Name="expenseRecord" Type="expensit.Model.Model.ExpenseRecord" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="1" Y="12.184" />
+        <Point X="1" Y="12.75" />
+        <Point X="0.75" Y="12.75" />
+        <Point X="0.75" Y="13.375" />
+        <Point X="1" Y="13.375" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="Expense" Type="expensit.Model.Model.ExpenseRecord" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="0.75" Y="12.184" />
+        <Point X="0.75" Y="13.938" />
+        <Point X="1" Y="13.938" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAQAAAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>ViewModel\AddExpenseViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="expenseRecord" />
+      <Property Name="Expense" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="expensit.UI.ViewModel.AddProfileViewModel">
+    <Position X="15.25" Y="10.5" Width="3" />
+    <AssociationLine Name="profile" Type="expensit.Model.Model.Profile" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="16" Y="10.5" />
+        <Point X="16" Y="10.006" />
+        <Point X="15.271" Y="10.006" Type="JumpStart" />
+        <Point X="15.104" Y="10.006" Type="JumpEnd" />
+        <Point X="9.958" Y="10.006" Type="JumpStart" />
+        <Point X="9.792" Y="10.006" Type="JumpEnd" />
+        <Point X="7.664" Y="10.006" />
+        <Point X="7.664" Y="14.375" />
+        <Point X="5.25" Y="14.375" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="NewProfile" Type="expensit.Model.Model.Profile" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="15.938" Y="10.5" />
+        <Point X="15.957" Y="10.254" />
+        <Point X="15.957" Y="10.022" />
+        <Point X="15.271" Y="10.022" Type="JumpStart" />
+        <Point X="15.104" Y="10.022" Type="JumpEnd" />
+        <Point X="9.958" Y="10.022" Type="JumpStart" />
+        <Point X="9.792" Y="10.022" Type="JumpEnd" />
+        <Point X="7.649" Y="10.022" />
+        <Point X="7.649" Y="14.687" />
+        <Point X="5.25" Y="14.687" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="profileDataService" Type="expensit.UI.Data.IProfileDataService" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="16.875" Y="12.569" />
+        <Point X="16.875" Y="12.944" />
+        <Point X="16.438" Y="12.944" />
+        <Point X="16.438" Y="14.5" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAACAAAAAAAIAAgAAAAAAAEAAAAAAAAAEAAAA=</HashCode>
+      <FileName>ViewModel\AddProfileViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="profile" />
+      <Field Name="profileDataService" />
+      <Property Name="NewProfile" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="expensit.UI.ViewModel.HomeViewModel">
+    <Position X="11" Y="10.5" Width="4" />
+    <AssociationLine Name="expenseDataSevice" Type="expensit.UI.Data.IExpenseDataSevice" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="11.25" Y="13.982" />
+        <Point X="11.25" Y="14.938" />
+        <Point X="12.25" Y="14.938" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AEAAgAIBAAAICAEAAAAAAAAAAAAAIAAAAEAAAAgAAAA=</HashCode>
+      <FileName>ViewModel\HomeViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="expenseDataSevice" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="expensit.UI.ViewModel.MainViewModel">
+    <Position X="7.75" Y="10.5" Width="3" />
+    <InheritanceLine Type="expensit.UI.Core.ProfileViewModel" FixedToPoint="true">
+      <Path>
+        <Point X="6.75" Y="9.925" />
+        <Point X="6.75" Y="10.2" />
+        <Point X="7.566" Y="10.2" Type="JumpStart" />
+        <Point X="7.771" Y="10.2" Type="JumpEnd" />
+        <Point X="9.25" Y="10.2" />
+        <Point X="9.25" Y="10.5" />
+      </Path>
+    </InheritanceLine>
+    <AssociationLine Name="viewModels" Type="expensit.UI.Core.IViewModelBase" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="9.875" Y="10.5" />
+        <Point X="9.875" Y="4.031" />
+        <Point X="7" Y="4.031" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAEAgAECAAAAAgAAAAEAAEAAAACAIAAAAAAAAAAAgAA=</HashCode>
+      <FileName>ViewModel\MainViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="viewModels" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="expensit.UI.ViewModel.StatisticsViewModel">
+    <Position X="3.75" Y="10.5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAgACAAAAAgAAAAAAAAAAAAAACIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\StatisticsViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="groupBy" />
+      <Property Name="GroupBy" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="expensit.UI.App">
+    <Position X="2.75" Y="2.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="expensit.Model.Model.ExpenseType">
+    <Position X="0.5" Y="15.75" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="expensit.Model.Model.ExpenseRecord">
+    <Position X="1" Y="13" Width="1.75" />
+    <TypeIdentifier />
+    <ShowAsAssociation>
+      <Property Name="Type" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="expensit.Model.Model.Group">
+    <Position X="2.75" Y="15.75" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="expensit.Model.Model.Profile">
+    <Position X="3.25" Y="13.25" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="expensit.DataAccess.DatabaseConfiguration">
+    <Position X="12.5" Y="16.5" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="expensit.DataAccess.ExpenseContext">
+    <Position X="11.5" Y="18.75" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="expensit.DataAccess.ExpenseDBInitializer">
+    <Position X="10.5" Y="16.5" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+  <Interface Name="expensit.UI.Core.IViewModelBase" Collapsed="true">
+    <Position X="5.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\IViewModelBase.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="expensit.UI.Data.IExpenseDataSevice">
+    <Position X="12.25" Y="14.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAABAAAAAAAAAAAEAAAAAAAAAAABAAEA=</HashCode>
+      <FileName>Data\IExpenseDataSevice.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="expensit.UI.Data.IProfileDataService">
+    <Position X="14.25" Y="14.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAEAAAgAAAAAAAAE=</HashCode>
+      <FileName>Data\IProfileDataService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="expensit.UI.ViewModel.IAddExpenseViewModel">
+    <Position X="0.5" Y="5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\IAddExpenseViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="expensit.UI.ViewModel.IHomeViewModel">
+    <Position X="8" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\IHomeViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="expensit.UI.ViewModel.IMainViewModel">
+    <Position X="5.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\IMainViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="expensit.UI.ViewModel.IProfileVIewModel">
+    <Position X="10.25" Y="5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\IProfileVIewModel.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="expensit.UI.ViewModel.IStatisticsViewModel">
+    <Position X="3.25" Y="5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\IStatisticsViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="expensit.UI.Core.Types.ExpenseGroupBy">
+    <Position X="1" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAEAQAAAAAAAAA=</HashCode>
+      <FileName>Core\Types\ExpenseGroupBy.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="expensit.UI.Core.Types.ViewModelTypes">
+    <Position X="8" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAEABAEAAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Core\Types\ViewModelTypes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
